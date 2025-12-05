@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfredapp.asirago.crome-multi-profile-bookmarks</string>
+	<key>connections</key>
+	<dict>
+		<key>508A7790-6726-421E-A79D-5799BBE364FB</key>
+		<array/>
+		<key>68C80F60-82AC-4B7E-9408-97A3EDD4414E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7EF93E76-44CE-4E7F-ACF2-61AF3E3B0E1D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6E12D828-0B80-4B30-B9CD-493DBBA9FA89</key>
+		<array/>
+		<key>7EF93E76-44CE-4E7F-ACF2-61AF3E3B0E1D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1D1EDEE8-AE22-4D02-9791-EC50CC869214</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D0987D63-F117-46C6-B611-4A3F55401A58</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6E12D828-0B80-4B30-B9CD-493DBBA9FA89</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>68C80F60-82AC-4B7E-9408-97A3EDD4414E</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL to Clipboard</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>508A7790-6726-421E-A79D-5799BBE364FB</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Open All Links in Bookmark Folder</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>asirago</string>
+	<key>description</key>
+	<string>Search bookmarks in multiple profiles</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Chrome Multi-Profile Bookmarks</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+
+IFS='|' read -r url _ profile &lt;&lt;&lt; "$query"
+
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory="$profile" "${url}" &gt; /dev/null 2&gt;&amp;1 &amp;</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>6E12D828-0B80-4B30-B9CD-493DBBA9FA89</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+
+IFS='|' read -r url _ _ &lt;&lt;&lt; "${query}"
+
+echo -n "${url}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>68C80F60-82AC-4B7E-9408-97A3EDD4414E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>7EF93E76-44CE-4E7F-ACF2-61AF3E3B0E1D</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Copied URL to Clipboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>1D1EDEE8-AE22-4D02-9791-EC50CC869214</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:bookmarks_keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching please wait...</string>
+				<key>script</key>
+				<string>query=$1
+
+./cmpbs -profiles $profiles $query
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Search for bookmarks in profiles {var:profiles}</string>
+				<key>title</key>
+				<string>Search Bookmarks</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D0987D63-F117-46C6-B611-4A3F55401A58</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+
+IFS='|' read -r url name profile &lt;&lt;&lt; "${query}"
+
+if [[ "$profile" == "Default" ]]; then
+  number=0
+else
+  number="${profile#Profile }"
+fi
+
+./cmpbs -folder "${name}" | tr '|' ' ' | xargs /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --profile-directory="${profile}" &gt; /dev/null 2&gt;&amp;1 &amp;</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>508A7790-6726-421E-A79D-5799BBE364FB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># Chrome Multi-Profile Bookmarks for Alfred
+
+An Alfred workflow for searching bookmarks across multiple Chrome profiles with intelligent fuzzy matching and bulk opening functionality.
+
+## Why
+Managing bookmarks across multiple Chrome profiles is cumbersome. Chrome's built-in bookmark search only
+works within the active profile, forcing you to switch profiles to access different bookmark collections.
+This workflow solves that by letting you search all your profiles at once from Alfred with natural, fast 
+search that just works.
+
+## Features
+
+- **Multi-Profile Search** - Search bookmarks across all your Chrome profiles simultaneously
+- **Smart Ranking** - Intelligent scoring algorithm that prioritizes:
+  - Exact matches over partial matches
+  - Name matches over folder and URL matches
+  - Prefix matches over substring matches
+- **Profile Icons** - Shows each profile's icon for easy identification
+- **Folder Context** - Displays the bookmark's folder location
+- **Bulk Open** - Hold ⌘ to open all bookmarks in a folder simultaneously
+
+## How to Use
+
+Simply open Alfred and start typing your bookmark keyword followed by search terms:
+```
+bm github
+bm react docs
+bm work project
+```
+
+The workflow searches across bookmark names, folder names, and URLs.
+
+**Selecting a bookmark** opens the URL in the correct Chrome profile.
+
+**Bulk Open:** Hold &lt;kbd&gt;⌘&lt;/kbd&gt; before selecting to open all URLs in that folder at once. Perfect for:
+- Opening your daily work tabs
+- Launching project-related links
+- Accessing bookmark categories quickly
+
+## Configuration
+
+### Set Profiles to Search From
+
+In the workflow configuration, set which Chrome profiles to search:
+
+**Profiles to search:** `0,1`
+
+Comma-separated list of profile numbers to search (e.g., `0,1,2`). Use `0` for the Default profile, `1` for the second profile, etc. Leave as `0,1` to search bookmarks of the first two profiles.
+
+### Chrome Profile Locations
+
+Bookmarks are expected at the standard Chromium locations:
+```
+~/Library/Application Support/Google/Chrome/Default/Bookmarks
+~/Library/Application Support/Google/Chrome/Profile {N}/Bookmarks
+```
+
+## Installation
+
+1. [Download the latest release](https://github.com/asirago/chrome-multi-profile-bookmarks/releases)
+2. Double-click the `.alfredworkflow` file
+3. Configure your profiles in Alfred's workflow settings
+
+## Documentation
+
+### Scoring Algorithm
+The workflow uses weighted scoring for intelligent ranking:
+
+| Match Type | Name | Folder | URL |
+|-----------|------|--------|-----|
+| Exact match | 30 | 25 | - |
+| Prefix match | 15 | 12 | 10 |
+| Word start | 8 | 6 | 4 |
+| Substring | 3 | 2 | 1 |
+
+## Support
+
+If you need help or want to report a bug, please open an issue:
+
+https://github.com/asirago/chrome-multi-profile-bookmarks/issues
+
+## License
+
+MIT
+
+---
+
+Made with ☕ by [asirago](https://github.com/asirago)</string>
+	<key>uidata</key>
+	<dict>
+		<key>1D1EDEE8-AE22-4D02-9791-EC50CC869214</key>
+		<dict>
+			<key>xpos</key>
+			<real>995</real>
+			<key>ypos</key>
+			<real>285</real>
+		</dict>
+		<key>508A7790-6726-421E-A79D-5799BBE364FB</key>
+		<dict>
+			<key>note</key>
+			<string>Open All URLs in the same Folder</string>
+			<key>xpos</key>
+			<real>595</real>
+			<key>ypos</key>
+			<real>495</real>
+		</dict>
+		<key>68C80F60-82AC-4B7E-9408-97A3EDD4414E</key>
+		<dict>
+			<key>note</key>
+			<string>Extrapolate URL before Copying URL to Clipboard</string>
+			<key>xpos</key>
+			<real>590</real>
+			<key>ypos</key>
+			<real>285</real>
+		</dict>
+		<key>6E12D828-0B80-4B30-B9CD-493DBBA9FA89</key>
+		<dict>
+			<key>note</key>
+			<string>Open URL in Browser</string>
+			<key>xpos</key>
+			<real>590</real>
+			<key>ypos</key>
+			<real>85</real>
+		</dict>
+		<key>7EF93E76-44CE-4E7F-ACF2-61AF3E3B0E1D</key>
+		<dict>
+			<key>xpos</key>
+			<real>780</real>
+			<key>ypos</key>
+			<real>285</real>
+		</dict>
+		<key>D0987D63-F117-46C6-B611-4A3F55401A58</key>
+		<dict>
+			<key>xpos</key>
+			<real>70</real>
+			<key>ypos</key>
+			<real>290</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>0,1</string>
+				<key>placeholder</key>
+				<string>0,1</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Comma-separated list of profile numbers to search (e.g., 0,1,2). Use 0 for the Default profile, 1 for the second profile, etc. Leave as 0,1 to search bookmarks of the first two profiles.</string>
+			<key>label</key>
+			<string>Set Profiles to Search From</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>profiles</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>bm</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Bookmarks Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>bookmarks_keyword</string>
+		</dict>
+	</array>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/asirago/chrome-multi-profile-bookmarks</string>
+</dict>
+</plist>
