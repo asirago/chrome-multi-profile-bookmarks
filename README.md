@@ -142,4 +142,4 @@ https://github.com/asirago/chrome-multi-profile-bookmarks/issues
 
 ## License
 
-MIT
+MIT License - see the [LICENSE](LICENSE) file for details
