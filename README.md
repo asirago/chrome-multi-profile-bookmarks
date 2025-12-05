@@ -23,7 +23,7 @@ search that just works.
 
 ## Installation
 
-1. [Download the latest release](https://github.com/asirago/chrome-multi-profile-bookmarks/releases)
+1. [Download the latest release](https://github.com/asirago/chrome-multi-profile-bookmarks/releases/latest)
 2. Double-click the `.alfredworkflow` file
 3. Configure your profiles in Alfred's workflow settings
 
