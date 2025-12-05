@@ -98,5 +98,5 @@ func main() {
 		log.Fatalf("failed to encode json: %v", err)
 	}
 
-	fmt.Printf(string(body))
+	fmt.Print(string(body))
 }
