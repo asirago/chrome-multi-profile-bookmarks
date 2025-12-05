@@ -97,8 +97,8 @@ The workflow uses a weighted scoring system:
 **Universal binary (Intel + Apple Silicon):**
 ```bash
 # Build for both architectures
-GOARCH=amd64 go build -o cmpbs-amd64
-GOARCH=arm64 go build -o cmpbs-arm64
+CGO_ENABLED=0 GOARCH=amd64 go build -ldflags="-s -w" -o cmpbs-amd64 ./src
+CGO_ENABLED=0 GOARCH=arm64 go build -ldflags="-s -w" -o cmpbs-arm64 ./src
 
 # Combine into universal binary
 lipo -create -output cmpbs cmpbs-amd64 cmpbs-arm64
@@ -114,7 +114,7 @@ make release
 
 **Single architecture:**
 
-`go build -o cmpbs` or `make build`
+`go build -o cmpbs ./src` or `make build`
 
 ### Development
 
