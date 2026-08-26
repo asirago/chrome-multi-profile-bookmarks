@@ -49,9 +49,12 @@ Comma-separated list of profile numbers to search (e.g., `0,1,2`). Use `0` for t
 
 ### Chrome Profile Locations
 
-Bookmarks are expected at the standard Chromium locations:
+The workflow prefers Chrome's account bookmark file when present and falls back
+to the legacy bookmark file:
 ```
+~/Library/Application Support/Google/Chrome/Default/AccountBookmarks
 ~/Library/Application Support/Google/Chrome/Default/Bookmarks
+~/Library/Application Support/Google/Chrome/Profile {N}/AccountBookmarks
 ~/Library/Application Support/Google/Chrome/Profile {N}/Bookmarks
 ```
 
