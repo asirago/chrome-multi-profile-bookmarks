@@ -2,23 +2,49 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"os"
 	"path/filepath"
 )
 
+func resolveBookmarksFile(profileDir string) (string, error) {
+	candidates := []string{"AccountBookmarks", "Bookmarks"}
+
+	for _, filename := range candidates {
+		candidate := filepath.Join(profileDir, filename)
+		_, err := os.Stat(candidate)
+		if err == nil {
+			return candidate, nil
+		}
+		if !errors.Is(err, os.ErrNotExist) {
+			return "", fmt.Errorf("failed to access %s: %w", candidate, err)
+		}
+	}
+
+	return "", fmt.Errorf(
+		"no bookmarks file found in %s (tried AccountBookmarks and Bookmarks)",
+		profileDir,
+	)
+}
+
 func getURLs(profileIndexes []int) map[string][]*bookmarkURL {
 	urls := map[string][]*bookmarkURL{}
 
 	for _, profileIndex := range profileIndexes {
+		profileName := getProfileName(profileIndex)
+		profileDir := filepath.Join(bookmarksDir, profileName)
+		bookmarksFilePath, err := resolveBookmarksFile(profileDir)
+		if err != nil {
+			log.Fatalf("failed to locate bookmarks file for %s: %v", profileName, err)
+		}
 
-		bookmarksFilePath := filepath.Join(bookmarksDir, getProfileName(profileIndex), "Bookmarks")
 		b, err := os.ReadFile(bookmarksFilePath)
 		if err != nil {
 			log.Fatalf(
 				"failed to read bookmarks file for %s: %v",
-				getProfileName(profileIndex),
+				profileName,
 				err,
 			)
 		}

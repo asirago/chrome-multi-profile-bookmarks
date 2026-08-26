@@ -66,9 +66,12 @@ Leave as `0,1` to search bookmarks from the first two profiles.
 
 ### Chrome Profile Locations
 
-The workflow follows the Chromium standard and expects bookmarks at:
+The workflow prefers Chrome's account bookmark file when present and falls back
+to the legacy bookmark file:
 ```
+~/Library/Application Support/Google/Chrome/Default/AccountBookmarks
 ~/Library/Application Support/Google/Chrome/Default/Bookmarks
+~/Library/Application Support/Google/Chrome/Profile {N}/AccountBookmarks
 ~/Library/Application Support/Google/Chrome/Profile {N}/Bookmarks
 ```
 
